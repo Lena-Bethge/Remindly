@@ -1,4 +1,4 @@
-package com.telran.remindly.test;
+package com.telran.remindly.tests;
 
 import com.telran.remindly.fw.ApplicationManager;
 import org.testng.annotations.AfterMethod;
@@ -18,9 +18,8 @@ public class TestBase {
 
     @AfterMethod(enabled = false)
     public void tearDown() {
+
         app.stop();
     }
 
-
 }
-

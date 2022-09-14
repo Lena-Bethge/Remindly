@@ -8,11 +8,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager {
+public class ApplicationManager   {
 
     AppiumDriver driver;
+
     DesiredCapabilities capabilities;
 
+    MainScreenHelper mainScreen;
+    RemindersHelper reminders;
+
+
+    public MainScreenHelper getMainScreen() {
+        return mainScreen;
+    }
+
+    public RemindersHelper getReminders() {
+        return reminders;
+    }
 
 
     public void init() throws MalformedURLException {
@@ -27,6 +39,9 @@ public class ApplicationManager {
 
         driver = new AndroidDriver(new URL("http:/127.0.0.1:4723/wd/hub"),capabilities);
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+
+        mainScreen = new MainScreenHelper(driver);
+        reminders = new RemindersHelper(driver);
 
     }
 
